@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aashutosh Singh's portfolio - UI/UX Designer & Frontend Developer creating intuitive and accessible digital experiences.">
+    <meta name="keywords" content="UI/UX designer, frontend developer, web design, Kathmandu, Nepal">
+    <title>Aashutosh Singh's Portfolio</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYms2dWxjYTJxanhpeWx0dWVmNDZpOHl3dGU4OHFjcXZvd2xjeDl5dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/p6EDJOPtyd0DJSuDef/giphy.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+            z-index: -1;
+        }
+
+        body.light-mode {
+            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYms2dWxjYTJxanhpeWx0dWVmNDZpOHl3dGU4OHFjcXZvd2xjeDl5dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/p6EDJOPtyd0DJSuDef/giphy.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #000;
+        }
+
+        body.light-mode::before {
+            background: rgba(255, 255, 255, 0.8); /* Light overlay for readability */
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        body.light-mode nav {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        body.light-mode nav ul li a {
+            color: #000;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d4d;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+
+        .hero {
+            
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            padding: 0 50px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+       
+        }
+
+        .hero .content {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #ff4d4d;
+        }
+
+        .hero p {
+            margin: 20px 0;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        body.light-mode .hero p {
+            color: #333;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        body.light-mode .social-icons a {
+            color: #000;
+        }
+
+        .social-icons a:hover {
+            color: #ff4d4d;
+            transform: scale(1.2);
+        }
+
+        .hire-btn {
+            padding: 10px 30px;
+            background: none;
+            border: 2px solid #ff4d4d;
+            color: #ff4d4d;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s, transform 0.3s;
+        }
+
+        body.light-mode .hire-btn {
+            border-color: #e03e3e;
+            color: #e03e3e;
+        }
+
+        .hire-btn:hover {
+            background-color: #ff4d4d;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 50px;
+            min-height: 100vh;
+        }
+
+        section h2 {
+            font-size: 36px;
+            color: #ff4d4d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #333;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease,box-shadow 0.3s;;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.light-mode .card {
+            background: rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px);
+        }
+
+        .card p {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        body.light-mode .card p {
+            color: #333;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        body.light-mode .card ul {
+            color: #333;
+        }
+
+        .card ul li {
+            margin: 5px 0;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            background: #444;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        body.light-mode .contact-form input,
+        body.light-mode .contact-form textarea {
+            background: #ddd;
+            color: #000;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            transform: scale(1.02);
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: #ff4d4d;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        body.light-mode .contact-form button {
+            background-color: #e03e3e;
+        }
+
+        .contact-form button:hover {
+            background-color: #e03e3e;
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: #ff4d4d;
+            font-size: 14px;
+            display: none;
+        }
+
+        .privacy-policy {
+            padding: 50px;
+        }
+
+        .privacy-policy h3 {
+            font-size: 24px;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+        }
+
+        .privacy-policy p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        body.light-mode .privacy-policy p {
+            color: #333;
+        }
+
+        .toggle-mode {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #ff4d4d;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 100;
+        }
+
+        body.light-mode .toggle-mode {
+            background: #e03e3e;
+        }
+
+        .toggle-mode:hover {
+            transform: scale(1.1);
+        }
+
+        .go-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff4d4d;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 100;
+        }
+
+        body.light-mode .go-top {
+            background: #e03e3e;
+        }
+
+        .go-top.visible {
+            display: flex;
+        }
+
+        .go-top:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .hero .image-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+
+            .card {
+                transform: translateY(20px);
+            }
+
+            .toggle-mode,
+            .go-top {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="Main navigation">
+        <div class="logo">AASHUTOSH</div>
+        <ul>
+            <li><a href="#home" onclick="smoothScroll('home')">Home</a></li>
+            <li><a href="#projects" onclick="smoothScroll('projects')">Projects</a></li>
+            <li><a href="#skills" onclick="smoothScroll('skills')">Skills</a></li>
+            <li><a href="#education" onclick="smoothScroll('education')">Education</a></li>
+            <li><a href="#experience" onclick="smoothScroll('experience')">Experience</a></li>
+            <li><a href="#contact" onclick="smoothScroll('contact')">Contact</a></li>
+            <li><a href="#privacy" onclick="smoothScroll('privacy')">Privacy Policy</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <img src="D:\pp.png" alt="My Profile Picture" width="200" height="200">
+        <div class="image-placeholder" role="img" aria-label="Profile picture placeholder"></div>
+        <div class="content">
+            <h1>Hi, It's Aashutosh<br><span id="role">UI/UX Designer</span></h1>
+            <p>I'm a Web-designer with 1+ years of experience creating intuitive digital experiences. My work focuses on accessibility and minimal aesthetics. Based in Kathmandu, Nepal, I combine my passion for clean design with technical expertise to build products that are both goodlooking and functional. When I'm not designing or coding, you can find me exploring the traveling or experimenting with new design tools.</p>
+            <div class="social-icons" aria-label="Social media links">
+                <a href="https://www.linkedin.com/in/aashutosh-singh-bab901312/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/aashutoshsingh19" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/its_aashu.018/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://dribbble.com/aashusingh" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+            </div>
+            <button class="hire-btn" onclick="smoothScroll('contact')">Get In Touch</button>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="card">
+            <h3>E-Commerce Redesign</h3>
+            <p>Revamped checkout flow, increasing conversions by 30%.</p>
+            <ul>
+                <li>UI Design</li>
+                <li>A/B Testing</li>
+                <li>Shopify</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Mobile Banking App</h3>
+            <p>Designed an intuitive banking interface for first-time users.</p>
+            <ul>
+                <li>UX Research</li>
+                <li>Figma</li>
+                <li>Prototyping</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Portfolio Template</h3>
+            <p>Created a responsive portfolio template for designers.</p>
+            <ul>
+                <li>HTML/CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Health Dashboard</h3>
+            <p>Designed a dashboard for health data visualization with accessibility in mind.</p>
+            <ul>
+                <li>Data Viz</li>
+                <li>React</li>
+                <li>Accessibility</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="card">
+            <h3>UI/UX Design - 80%</h3>
+            <p>Creating intuitive and accessible user interfaces.</p>
+        </div>
+        <div class="card">
+            <h3>Wireframing - 865%</h3>
+            <p>Developing wireframes to plan user flows.</p>
+        </div>
+        <div class="card">
+            <h3>Prototyping - 60%</h3>
+            <p>Building interactive prototypes for testing.</p>
+        </div>
+        <div class="card">
+            <h3>HTML/CSS - 95%</h3>
+            <p>Crafting responsive and semantic web layouts.</p>
+        </div>
+        <div class="card">
+            <h3>JavaScript - 65%</h3>
+            <p>Adding interactivity to web applications.</p>
+        </div>
+        <div class="card">
+            <h3>React - 50%</h3>
+            <p>Building dynamic user interfaces with React.</p>
+        </div>
+        <div class="card">
+            <h3>Figma - 90%</h3>
+            <p>Designing and collaborating with Figma.</p>
+        </div>
+        <div class="card">
+            <h3>Adobe XD - 80%</h3>
+            <p>Creating designs and prototypes in Adobe XD.</p>
+        </div>
+        <div class="card">
+            <h3>Git - 65%</h3>
+            <p>Managing version control with Git.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="card">
+            <h3>Bachelor's in Computer Science</h3>
+            <p>Lord Buddha Education Foundation, Nepal (2014-Present)</p>
+            <p>Focused on software development and Cyber Security.</p>
+        </div>
+        <div class="card">
+            <h3>Online Course in UI/UX Design</h3>
+            <p>Coursera (2022)</p>
+            <p>Completed a course on user experience design principles.</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>UI/UX Designer & Frontend Developer</h3>
+            <p>Freelance (2024-Present)</p>
+            <p>Designed and developed intuitive digital experiences for clients across industries.</p>
+        </div>
+        <div class="card">
+            <h3>Junior UI Designer</h3>
+            <p>Tech Startup, Kathmandu (2024-Present)</p>
+            <p>Assisted in creating wireframes, prototypes, and responsive web interfaces.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p>I'm currently available for freelance work and open to new opportunities. If you have a project in mind or just want to say hello, feel free to reach out at <a href="mailto:aashu98059@gmail.com">aashu98059@gmail.com</a>.</p>
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" aria-label="Contact form">
+            <input type="text" id="name" name="name" placeholder="Your Name" required aria-describedby="nameError">
+            <span id="nameError" class="error">Name is required</span>
+            <input type="email" id="email" name="email" placeholder="Your Email" required aria-describedby="emailError">
+            <span id="emailError" class="error">Valid email is required</span>
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required aria-describedby="messageError"></textarea>
+            <span id="messageError" class="error">Message is required</span>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="privacy" class="privacy-policy">
+        <h2>Privacy Policy</h2>
+        <h3>1. Introduction</h3>
+        <p>Welcome to Aashutosh Singh's Portfolio. This Privacy Policy explains how we collect, use, and protect your personal information when you visit this website or interact with our services.</p>
+        
+        <h3>2. Information We Collect</h3>
+        <p>We may collect personal information such as your name, email address, and message content when you submit the contact form. We also collect non-personal information like browser type and IP address for analytics purposes.</p>
+        
+        <h3>3. How We Use Your Information</h3>
+        <p>Your information is used to respond to your inquiries, improve our website, and communicate updates or promotional content. We do not sell or share your personal information with third parties except as required by law.</p>
+        
+        <h3>4. Data Security</h3>
+        <p>We implement reasonable security measures to protect your data from unauthorized access or disclosure. However, no method of transmission over the internet is completely secure.</p>
+        
+        <h3>5. Your Rights</h3>
+        <p>You have the right to request access, correction, or deletion of your personal data. To exercise these rights, please contact us via the contact form.</p>
+        
+        <h3>6. Changes to This Policy</h3>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
+        
+        <p><strong>Effective Date:</strong> May 03, 2025</p>
+    </section>
+
+    <button class="toggle-mode" aria-label="Toggle dark/light mode" onclick="toggleMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+    <button class="go-top" aria-label="Go to top" onclick="goToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        function smoothScroll(sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Card animation on scroll
+        function handleScroll() {
+            const cards = document.querySelectorAll('.card');
+            const triggerBottom = window.innerHeight * 0.8;
+
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < triggerBottom) {
+                    card.classList.add('visible');
+                }
+            });
+
+            // Show/hide go-to-top button
+            const goTopBtn = document.querySelector('.go-top');
+            if (window.scrollY > 200) {
+                goTopBtn.classList.add('visible');
+            } else {
+                goTopBtn.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial check on page load
+
+        // Dark mode toggle
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+            const toggleIcon = document.querySelector('.toggle-mode i');
+            toggleIcon.classList.toggle('fa-moon');
+            toggleIcon.classList.toggle('fa-sun');
+        }
+
+        // Go to top
+        function goToTop() {
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Dynamic role text
+        const roles = ['UI/UX Designer', 'Frontend Developer'];
+        let roleIndex = 0;
+        const roleElement = document.getElementById('role');
+
+        function changeRole() {
+            roleElement.style.opacity = 0;
+            setTimeout(() => {
+                roleElement.textContent = roles[roleIndex];
+                roleElement.style.opacity = 1;
+                roleIndex = (roleIndex + 1) % roles.length;
+            }, 500);
+        }
+
+        setInterval(changeRole, 3000);
+        roleElement.style.transition = 'opacity 0.5s ease';
+
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const messageError = document.getElementById('messageError');
+
+            let isValid = true;
+
+            if (!name) {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            if (!email || !email.includes('@')) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            if (!message) {
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+
+            if (isValid) {
+                document.getElementById('contactForm').submit(); // Submit to Formspree
+            }
+        }
+        
+    </script>
+</body>
+</html>
